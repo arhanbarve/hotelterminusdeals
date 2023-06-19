@@ -22,6 +22,7 @@
       text-align: center;
       height: 100%;
       color: white;
+      border-radius: 25px;
     }
 
     /* Customizing button layout */
@@ -82,21 +83,21 @@
   <div class="row" id="row">
     <div class="column" id="column1" style="background-color:#171717;">
       <br>
-      <h2>Family Special!</h2>
+      <h2>Family Fun!</h2>
       <p>
-        <img src="https://i.ibb.co/q9ggfry/pexels-photo-3875141.jpg" alt="Family" style="width:210px;height:130px;">
+        <img src="https://i.ibb.co/QPbKdvq/pexels-photo-3875141-min-min.jpg" alt="Family" style="width:210px;height:130px;">
       </p>
-      <p>This package is created to maximize family fun! If you book the Terminus Family Suite with at least 6 people
-        staying in your room, we will give you a 5% discount on your room costs. Additionally, we will book you and your
+      <p>This package is created to maximize family fun! If you book the Southern Suite with at least 6 people
+        staying in your room, we will give you a 5% discount on your room price. Additionally, we will book you and your
         family free tickets to the World of Coca-Cola!</p>
     </div>
 
     <!-- Content for the Couples Special Deal -->
     <div class="column" id="column2" style="background-color:#303030;">
       <br>
-      <h2>Couples Special!</h2>
+      <h2>Romantic Getaway!</h2>
       <p>
-        <img src="https://i.ibb.co/sJnfzpq/Depositphotos-176270094-XL.jpg" alt="Couple"
+        <img src="https://i.ibb.co/m8z3WBQ/Depositphotos-176270094-XL-min-min.jpg" alt="Couples"
           style="width:210px; height:130px;">
       </p>
       <p>If you're booking as a couple, this package is for you! Don't pass up the opportunity to get 10% off any room
@@ -149,11 +150,11 @@
     </div>
 
     <script>
-      // JavaScript logic for hiding certain elements at the beginning
+      // JavaScript logic for hiding certain screen elements at the beginning
       document.getElementById("generatescreen").style.display = "none";
       document.getElementById("finishscreen").style.display = "none";
 
-      // Logic for selecting a button
+      // Display changes after selecting a button
       function submit() {
         document.getElementById("column1").style.display = "none";
         document.getElementById("column2").style.display = "none";
@@ -176,9 +177,9 @@
       let button2click = false;
       let button3click = false;
 
-      const button1 = document.getElementById("selection1");
-      const button2 = document.getElementById("selection2");
-      const button3 = document.getElementById("selection3");
+      let button1 = document.getElementById("selection1");
+      let button2 = document.getElementById("selection2");
+      let button3 = document.getElementById("selection3");
 
       // Checking to see which button was clicked
       button1.addEventListener("click", function () {
@@ -205,8 +206,6 @@
           document.getElementById("extstayqr").style.display = "block";
           document.getElementById("famqr").style.display = "none";
           document.getElementById("coupqr").style.display = "none";
-        } else {
-          console.log("Error");
         }
       }
     </script>
