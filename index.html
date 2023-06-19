@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Deal Chart</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Avenir Light";
+    }
+
+    /* Customizing deal columns */
+    .column {
+      float: left;
+      width: 33.33%;
+      padding: 10px;
+      text-align: center;
+      height: 100%;
+      color: white;
+    }
+
+    /* Customizing button layout */
+    .answers {
+      float: left;
+      width: 33.33%;
+      padding: 10px;
+      text-align: center;
+      height: 100px;
+    }
+
+    /* Customizing QR code generation screen layout */
+    .generatescreen {
+      float: center;
+      width: 100%;
+      padding: 10px;
+      text-align: center;
+      height: 100%;
+      background-color: black;
+      color: white;
+    }
+
+    /* Customizing end screen layout */
+    .finishscreen {
+      float: center;
+      width: 100%;
+      padding: 10px;
+      text-align: center;
+      height: 100%;
+    }
+
+    /* Centering the end QR codes */
+    .famqr,
+    .coupqr,
+    .extstayqr {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 50%;
+    }
+
+    /* Giving the buttons a hover effect */
+    .answers:hover {
+      opacity: 60%;
+    }
+
+    /* Creates responsive layout (makes the three columns stack on top of each other instead of next to each other) */
+    @media (max-width: 600px) {
+      .column {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Content for the Family Special Deal -->
+  <div class="row" id="row">
+    <div class="column" id="column1" style="background-color:#171717;">
+      <br>
+      <h2>Family Special!</h2>
+      <p>
+        <img src="https://i.ibb.co/q9ggfry/pexels-photo-3875141.jpg" alt="Family" style="width:210px;height:130px;">
+      </p>
+      <p>This package is created to maximize family fun! If you book the Terminus Family Suite with at least 6 people
+        staying in your room, we will give you a 5% discount on your room costs. Additionally, we will book you and your
+        family free tickets to the World of Coca-Cola!</p>
+    </div>
+
+    <!-- Content for the Couples Special Deal -->
+    <div class="column" id="column2" style="background-color:#303030;">
+      <br>
+      <h2>Couples Special!</h2>
+      <p>
+        <img src="https://i.ibb.co/sJnfzpq/Depositphotos-176270094-XL.jpg" alt="Couple"
+          style="width:210px; height:130px;">
+      </p>
+      <p>If you're booking as a couple, this package is for you! Don't pass up the opportunity to get 10% off any room
+        that you book. Additionally, our staff will get you a free lunch and dinner reservation at any restaurant of
+        your choice to make your stay even better.</p>
+    </div>
+
+    <!-- Content for the Extended Stay Special Deal -->
+    <div class="column" id="column3" style="background-color:#424242;">
+      <br>
+      <h2>Extended Stay Special!</h2>
+      <p>
+        <img src="https://i.ibb.co/TvpWZ8L/hotel-2037166-1280.jpg" alt="Extended Stay"
+          style="width:210px; height:130px;">
+      </p>
+      <p>The Extended Stay Special is for any guests that decide to extend their stay past 15 days here at Hotel
+        Terminus. Whether you’re a business traveler or adventurer, our incredible offer of 15% off of a booking of 15
+        days or more is sure to make your stay more enjoyable.</p>
+    </div>
+
+    <!-- Content for the selection buttons -->
+    <div class="answerselection" id="answerselection">
+      <div class="answers">
+        <img id="selection1" src="https://i.ibb.co/HnpSM7j/Circles.png" style="width:50px" onclick="submit()"
+          class="center">
+      </div>
+      <div class="answers">
+        <img id="selection2" src="https://i.ibb.co/HnpSM7j/Circles.png" style="width:50px" onclick="submit()"
+          class="center">
+      </div>
+      <div class="answers">
+        <img id="selection3" src="https://i.ibb.co/HnpSM7j/Circles.png" style="width:50px" onclick="submit()"
+          class="center">
+      </div>
+    </div>
+
+    <!-- Content for the QR code generation screen -->
+    <div class="generatescreen" id="generatescreen">
+      <h1>Great Choice!</h1>
+      <p>Generating your custom QR code...</p>
+      <img id="loadingcircle" src="https://i.ibb.co/wMGJK1p/ezgif-com-crop-2.gif" style="width:20%">
+    </div>
+
+    <!-- Content for the end screen -->
+    <div class="finishscreen" id="finishscreen">
+      <h1>Scan this QR code to claim your deal!</h1>
+      <img id="famqr" class="famqr" src="https://i.ibb.co/zPvDdR5/family.png" style="width:30%">
+      <img id="coupqr" class="coupqr" src="https://i.ibb.co/0FFs1XW/couples.png" style="width:30%">
+      <img id="extstayqr" class="extstayqr" src="https://i.ibb.co/7JwyKVr/extendedstay.png" style="width:30%">
+    </div>
+
+    <script>
+      // JavaScript logic for hiding certain elements at the beginning
+      document.getElementById("generatescreen").style.display = "none";
+      document.getElementById("finishscreen").style.display = "none";
+
+      // Logic for selecting a button
+      function submit() {
+        document.getElementById("column1").style.display = "none";
+        document.getElementById("column2").style.display = "none";
+        document.getElementById("column3").style.display = "none";
+        document.getElementById("selection1").style.display = "none";
+        document.getElementById("selection2").style.display = "none";
+        document.getElementById("selection3").style.display = "none";
+        document.getElementById("generatescreen").style.display = "block";
+
+        // Setting a time limit on showing the generate screen
+        setTimeout(() => {
+          document.getElementById("generatescreen").style.display = "none";
+          document.getElementById("finishscreen").style.display = "block";
+          qrdisplay();
+        }, 4000);
+      }
+
+      // Storing button clicks as variables to determine which one was clicked
+      let button1click = false;
+      let button2click = false;
+      let button3click = false;
+
+      const button1 = document.getElementById("selection1");
+      const button2 = document.getElementById("selection2");
+      const button3 = document.getElementById("selection3");
+
+      // Checking to see which button was clicked
+      button1.addEventListener("click", function () {
+        button1click = true;
+      });
+      button2.addEventListener("click", function () {
+        button2click = true;
+      });
+      button3.addEventListener("click", function () {
+        button3click = true;
+      });
+
+      // Hiding and showing certain QR codes based on choice
+      function qrdisplay() {
+        if (button1click) {
+          document.getElementById("famqr").style.display = "block";
+          document.getElementById("coupqr").style.display = "none";
+          document.getElementById("extstayqr").style.display = "none";
+        } else if (button2click) {
+          document.getElementById("coupqr").style.display = "block";
+          document.getElementById("famqr").style.display = "none";
+          document.getElementById("extstayqr").style.display = "none";
+        } else if (button3click) {
+          document.getElementById("extstayqr").style.display = "block";
+          document.getElementById("famqr").style.display = "none";
+          document.getElementById("coupqr").style.display = "none";
+        } else {
+          console.log("Error");
+        }
+      }
+    </script>
+
+  </div>
+</body>
+
+</html>
